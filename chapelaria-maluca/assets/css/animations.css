@@ -1,0 +1,170 @@
+/* ==========================================================================
+       MODULE 02: HERO STAGGERED ENTRANCE & PARALLAX 3D
+       ========================================================================== */
+    @keyframes fadeUpReveal {
+      0% { opacity: 0; transform: translateY(28px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-stagger {
+      opacity: 0;
+      animation: fadeUpReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.20s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.48s; }
+    .delay-5 { animation-delay: 0.62s; }
+
+    @keyframes gentleLevitate {
+      0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+      50% { transform: translateY(-14px) rotate(1.5deg); }
+    }
+
+    @keyframes slowGearSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .floating-hat-bob {
+      animation: gentleLevitate 5.5s ease-in-out infinite;
+    }
+
+    .gear-spin-slow {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: slowGearSpin 18s linear infinite;
+    }
+
+    .hero-3d-stage {
+      perspective: 1100px;
+    }
+
+    .hero-3d-card {
+      transform-style: preserve-3d;
+      transition: transform 0.14s ease-out;
+      will-change: transform;
+    }
+
+    @keyframes sparkFly {
+      0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(180deg); }
+    }
+
+    .magic-spark {
+      position: absolute;
+      pointer-events: none;
+      animation: sparkFly 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* ==========================================================================
+       MODULE 03: RIGHTWARD INFINITE MARQUEE (@keyframes scrollRight)
+       ========================================================================== */
+    @keyframes scrollRight {
+      0% { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0%, 0, 0); }
+    }
+
+    .marquee-viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      gap: 1.5rem;
+      padding: 0.75rem 0;
+      animation: scrollRight var(--marquee-duration) linear infinite;
+      animation-direction: var(--marquee-direction);
+      will-change: transform;
+    }
+
+    .marquee-viewport:hover .marquee-track,
+    .marquee-track.is-paused {
+      animation-play-state: paused;
+    }
+
+    /* ==========================================================================
+       MODULE 04: WORLD ATLAS FLIGHT PATHS & RANGE SLIDER
+       ========================================================================== */
+    @keyframes dashFlight {
+      to { stroke-dashoffset: -36; }
+    }
+
+    .flight-route-active {
+      stroke-dasharray: 6 6;
+      animation: dashFlight 1.2s linear infinite;
+    }
+
+    @keyframes pinPulseRing {
+      0% { transform: scale(0.8); opacity: 0.9; }
+      100% { transform: scale(2.3); opacity: 0; }
+    }
+
+    .pin-pulse {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: pinPulseRing 2s ease-out infinite;
+    }
+
+    /* Custom Gold Range Slider */
+    input[type="range"].gold-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: #2B2046;
+      outline: none;
+      border: 1px solid rgba(212, 163, 89, 0.35);
+    }
+    input[type="range"].gold-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F3D08A, #D4A359);
+      border: 2px solid #120D1D;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(212, 163, 89, 0.65);
+    }
+    input[type="range"].gold-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F3D08A, #D4A359);
+      border: 2px solid #120D1D;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(212, 163, 89, 0.65);
+    }
+
+    /* Scroll Reveal & Tilt Cards */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+      will-change: transform;
+    }
+
+    @keyframes hatPopMorph {
+      0% { transform: scale(0.92) rotate(-2deg); opacity: 0.7; }
+      60% { transform: scale(1.03) rotate(1deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .hat-morph-anim {
+      animation: hatPopMorph 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    }

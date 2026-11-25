@@ -1,0 +1,55 @@
+/* ==========================================================================
+       MODULE 01: DESIGN TOKENS & EDITORIAL BASE
+       ========================================================================== */
+    :root {
+      --bg-velvet: #120D1D;
+      --bg-plum: #1D1530;
+      --accent-gold: #D4A359;
+      --accent-gold-light: #F3D08A;
+      --accent-bordeaux: #8E244D;
+      --accent-emerald: #1E6B52;
+      --paper-cream: #FAF6F0;
+      --marquee-duration: 28s;
+      --marquee-direction: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-velvet);
+      color: var(--paper-cream);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-editorial {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .velvet-pattern {
+      background-image:
+        radial-gradient(circle at 18% 18%, rgba(212, 163, 89, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 82% 72%, rgba(142, 36, 77, 0.14) 0%, transparent 50%),
+        linear-gradient(to right, rgba(212, 163, 89, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(212, 163, 89, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+    }
+
+    .cream-paper-pattern {
+      background-color: #FAF6F0;
+      background-image: radial-gradient(rgba(29, 21, 48, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0D0916;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #D4A359, #8E244D);
+      border-radius: 9999px;
+    }
